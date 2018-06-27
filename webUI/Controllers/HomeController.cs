@@ -10,8 +10,16 @@ namespace webUI.Controllers
 {
     public class HomeController : Controller
     {
+
+        private dbContext _context;
+
+        public HomeController(dbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
+            var data = _context.ServiceAds.ToList();
             return View();
         }
 
